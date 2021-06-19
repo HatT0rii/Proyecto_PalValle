@@ -61,8 +61,9 @@ function EditarCategoria() {
 
     return (
     <div>
+     <h3 className ="mt-4 font-weight-bold text-success">Editar Categoria</h3>
      <h3 className ="mt-4 text-info">Editar Categoria</h3>
-           <hr/>
+      <hr/>
       <FormCategoria 
         value={value} 
         actualizarInput = {actualizarInput}
@@ -72,7 +73,5 @@ function EditarCategoria() {
     </div>
     )
 }
-
-
 
 export default EditarCategoria
