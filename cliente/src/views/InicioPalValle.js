@@ -2,14 +2,15 @@ import {useState, useEffect} from 'react'
 import {obtenerProductos} from "../services/productoService"
 import Productos from '../components/Productos'
 import Header from "../components/Header"
+// import { Col, Row } from 'antd'
 // import Cards from '../components/Cards'
 import CategoriesCarousel from '../components/CategoriesCarousel'
-import GroupCategories from '../components/GroupCategories'
 
 
 function InicioPalValle() {
     
   const [productos, setProductos] = useState ([])
+
     const getProductos = async () => {
         let productosObtenidos = await obtenerProductos()
         setProductos(productosObtenidos)
@@ -18,7 +19,7 @@ function InicioPalValle() {
     
       useEffect(()=>{
         getProductos()
-      },[])
+      },[])  
 
     return (
         <div>
@@ -35,23 +36,22 @@ function InicioPalValle() {
         <div classNameName="row">
             <div classNameName="col-md-6 mb-3">
         <br/>
-        <GroupCategories/>
+        {/* <GroupCategories/> */}
             <div classNameName="form-check">
               <label classNameName="form-check-label" for="flexCheckDefault">
-                  istema Digestivo
+                  Sistema Digestivo
               </label>
               <input classNameName="form-check-input" type="checkbox"  id="flexCheckDefault" />
 
             </div>
           </div>
-        <div classNameName="col-md-6 mb-3">
-        <Productos productos={productos} categoria="Sistema Digestivo" id_categoria="1"/>
-            <Productos productos={productos} categoria="Sistema Nervioso" id_categoria="2"/> 
-        </div>
+            <div classNameName="col-md-6 mb-3">
+                <Productos productos={productos} categoria="Sistema Digestivo" id_categoria="1"/>
+                <Productos productos={productos} categoria="Sistema Nervioso" id_categoria="2"/> 
+            </div>
+
 
         </div>
-
-            
         </div>
     )
 }

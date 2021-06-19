@@ -5,6 +5,7 @@ function Productos({ productos, categoria, id_categoria }) {
   console.log(id_categoria)
 
   console.log(productos.fotos)
+  
     return (
         <div className="container">
       <div>
