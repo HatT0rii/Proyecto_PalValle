@@ -1,14 +1,14 @@
 import React from 'react'
 import {Link} from "react-router-dom"
 
-function Productos({ productos, categoria, id_categoria }) {
- /*  console.log(id_categoria)
- */
-  /* console.log(productos.fotos) */
+function MuestraProductos({ productos, categoria, id_categoria }) {
+  console.log(id_categoria)
+
+  console.log(productos.fotos)
     return (
         <div className="container">
       <div>
-        <h2 className="my-3 text-danger fw-bold mb-4">{categoria.toUpperCase()}</h2>
+        <h2 className="my-3 fw-bold">{categoria}</h2>
       </div>
       <div className="row">
         {productos
@@ -37,4 +37,4 @@ function Productos({ productos, categoria, id_categoria }) {
     )
 }
 
-export default Productos
+export default MuestraProductos

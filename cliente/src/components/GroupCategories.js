@@ -1,101 +1,85 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import Slider from "@material-ui/core/Slider";
+import React, {useState, useEffect} from 'react'
+import { withStyles } from '@material-ui/core/styles';
+import { green } from '@material-ui/core/colors';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Productos from '../components/Productos'
 
-function GroupCategories({ productos, categoria, id_categoria, mostrarFiltro, setProductos}) {
 
-  const [toggleFiltro, setToggleFiltro] = useState(false);
-  const [filtroPrecio, setFiltroPrecio] = useState([1,999]);
-  const [filtroNombre, setFiltroNombre] = useState("");
-  // Creo una copia de mi arreglo de productos en un estado
-  const [productosOriginal] = useState(productos)
-  
-  const manejarFiltroPrecio = (evento, precio) => {
-    // después de cambiar el estado de filtroPrecio a un array, el parámetro precio es otro array
-   setFiltroPrecio(precio)
-  }
+function GroupCategories({ 
+  productos, 
+  categoria, 
+  id_categoria, 
+  mostrarFiltro, 
+  setProductos}) {
 
-  const textoPrecio = (valor) => {
-    return `S/ ${valor}`
-  }
+    const [checkboxFiltro, setCheckboxFiltro] = useState(false);
+    const [filtroNombre, setFiltroNombre] = useState("")
 
-  useEffect(() => {
-    let productosFiltrados = productosOriginal.filter((prod)=>{
-      return prod.precio >= filtroPrecio[0] && 
-            prod.precio <= filtroPrecio[1] && 
-            prod.nombre.toLowerCase().includes(filtroNombre.toLowerCase())
-    })
-    setProductos(productosFiltrados)  
-  },[filtroPrecio, filtroNombre])
+    const GreenCheckbox = withStyles({
+        root: {
+          color: green[400],
+          '&$checked': {
+            color: green[600],
+          },
+        },
+        checked: {},
+      })((props) => <Checkbox color="default" {...props} />);
 
-  return (
-    <div className="container">
-      <div>
+      const [state, setState] = React.useState({
+        checked: true,
+      });
+    
+      const handleChange = (event) => {
+        setState({ ...state, [event.target.name]: event.target.checked });
+      };
+
+    const [productosOriginal] = useState(productos)
+
+    useEffect(() => {
+        let productosFiltrados = productosOriginal.filter((prod)=>{
+          return prod.nombre.toLowerCase().includes(filtroNombre.toLowerCase())
+        })
+        setProductos(productosFiltrados)  
+      },[filtroNombre])
+
+    return (
+        <div>
+            <div>
         <h2 className="my-3 fw-bold">{categoria}</h2>
       </div>
       {mostrarFiltro ? (
         <div>
-          <button
-            className="btn btn-outline-dark btn-sm"
-            onClick={() => {
-              setToggleFiltro(!toggleFiltro);
-            }}
-          >
-            <i className="fas fa-funnel-dollar me-1"></i> Filtros
+          <button className="btn btn-outline-success btn-sm" onClick={() => {setCheckboxFiltro(!checkboxFiltro);}}>
+            <i className="fas fa-funnel-dollar me-1"></i>   Filtros
           </button>
-          {toggleFiltro ? (
+          {checkboxFiltro ? (
             <div className="row p-3">
               <div className="col-12 col-lg-6">
-                <label>Ajustar Precio</label>
-                <Slider 
-                  value={filtroPrecio}
-                  min={1} 
-                  max={999} 
-                  onChange={manejarFiltroPrecio}
-                  getAriaValueText={textoPrecio}
-                  valueLabelDisplay="auto"
-                />
-              </div>
-
-              <div className="col-12 col-lg-6">
-                <label className="form-label">Buscar por nombre</label>
-                <input 
-                  type="text" 
-                  className="form-control" 
-                  placeholder="Ej. Gorro"
-                  value={filtroNombre}
-                  onChange={(e) => {setFiltroNombre(e.target.value)}}
-                />
+                    <label>Selecciona la categoria</label>
+                      
+                    <FormControlLabel
+                        control={<GreenCheckbox
+                        checked={state.checkedG} 
+                        value={filtroNombre}
+                        onChange={(e) => {setFiltroNombre(e.target.value)}} 
+                        name="checkedG"/>}
+                        label="Custom color"
+                    />
               </div>
             </div>
           ) : null}
         </div>
       ) : null}
-
-      <div className="row mt-3">
-        {productos
-          .filter((prod) => {
-            return prod.id_categoria == id_categoria;
-          })
-          .slice(0, 8)
-          .map((prod, i) => (
-            <div className="col-6 col-lg-3" key={i}>
-              <Link 
-                className="card mb-4" 
-                to={`/detalle/${prod.id}`} 
-                style={{textDecoration:'none', color:'black'}}
-              >
-                <img className="card-img-top" src={prod.fotos[0]} alt="" />
-                <div className="card-body">
-                  <h6 className="card-title">{prod.nombre}</h6>
-                  <span className="fw-bold">S/ {prod.precio}</span>
-                </div>
-              </Link>
-            </div>
-          ))}
-      </div>
-    </div>
-  );
+      <div classNameName="col-md-6 mb-3">
+        <Productos productos={productos} categoria="Bebidas" id_categoria="1"/>
+        <Productos productos={productos} categoria="Lacteos" id_categoria="2"/> 
+        <Productos productos={productos} categoria="Frutas" id_categoria="3"/> 
+        <Productos productos={productos} categoria="Abarrotes" id_categoria="4"/> 
+          
+          </div>
+        </div>
+    )
 }
 
-export default GroupCategories;
+export default GroupCategories
