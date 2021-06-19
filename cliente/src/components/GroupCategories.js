@@ -51,20 +51,44 @@ function GroupCategories({
       {mostrarFiltro ? (
         <div>
           <button className="btn btn-outline-success btn-sm" onClick={() => {setCheckboxFiltro(!checkboxFiltro);}}>
-            <i className="fas fa-funnel-dollar me-1"></i>   Filtros
+            <i className="fas fa-funnel-dollar me-1"></i>Filtrar Categoria
           </button>
           {checkboxFiltro ? (
             <div className="row p-3">
               <div className="col-12 col-lg-6">
                     <label>Selecciona la categoria</label>
-                      
+                    
                     <FormControlLabel
                         control={<GreenCheckbox
                         checked={state.checkedG} 
                         value={filtroNombre}
                         onChange={(e) => {setFiltroNombre(e.target.value)}} 
                         name="checkedG"/>}
-                        label="Custom color"
+                        label="Bebidas"
+                    />
+                    <FormControlLabel
+                        control={<GreenCheckbox
+                        checked={state.checkedG} 
+                        value={filtroNombre}
+                        onChange={(e) => {setFiltroNombre(e.target.value)}} 
+                        name="checkedG"/>}
+                        label="Lacteos"
+                    />
+                    <FormControlLabel
+                        control={<GreenCheckbox
+                        checked={state.checkedG} 
+                        value={filtroNombre}
+                        onChange={(e) => {setFiltroNombre(e.target.value)}} 
+                        name="checkedG"/>}
+                        label="Frutas"
+                    />
+                    <FormControlLabel
+                        control={<GreenCheckbox
+                        checked={state.checkedG} 
+                        value={filtroNombre}
+                        onChange={(e) => {setFiltroNombre(e.target.value)}} 
+                        name="checkedG"/>}
+                        label="Abarrotes"
                     />
               </div>
             </div>
