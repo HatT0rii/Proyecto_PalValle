@@ -8,7 +8,7 @@ import Categorias from "./views/Categorias"
 function Routes() {
     return (
         <div>
-           <Route path="/PalValle" exact component={InicioPalValle}/>
+           <Route path="/" exact component={InicioPalValle}/>
            <Route path="/detalle/:id" component={DetalleProducto}/>
            <Route path="/carrito" exact component={CarritoDeCompra} />
            <Route path="/categorias" exact component={Categorias} />

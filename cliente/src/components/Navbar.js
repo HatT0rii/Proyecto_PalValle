@@ -1,7 +1,6 @@
 import React,{useState} from "react";
 import {Link} from "react-router-dom"
 
-import CarritoLogo from '../assets/shopping-cart.png'
 
 function Navbar() {
   const [collapsed, setCollapsed] = useState(true)
@@ -15,7 +14,7 @@ function Navbar() {
            {/*      <Link className="nav-logo" to="/PalValle">
                 <img src={Logo} alt="PalValle" width="90" height="80"/>
                 </Link> */}
-            <Link className="navbar-brand text-white fw-bold" to="/PalValle">
+            <Link className="navbar-brand text-white fw-bold" to="/">
            {/* <img src={Logo} alt="PalValle"/> */}
            <h3 className="nombre_logo">PalValle</h3>
             </Link>
@@ -48,7 +47,7 @@ function Navbar() {
             <ul className="navbar-nav">
               <li className="nav-item">
                 <Link className="nav-link" to="/carrito">
-                  <img className="img-carrito"src={CarritoLogo} alt="Ir al carrito"/>
+                  <i className="fas fa-shopping-cart"/>
                 </Link>
               </li>
             </ul>

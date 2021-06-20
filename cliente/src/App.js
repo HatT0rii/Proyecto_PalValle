@@ -10,6 +10,7 @@ import {Switch, BrowserRouter as Router} from "react-router-dom"
 import CarritoContextProvider from "./context/carritoContext";
 import Navbar from "./components/Navbar"
 import Routes from "./Routes"
+import Footer from './components/Footer';
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
             <Routes />
           </Switch>
       </CarritoContextProvider>
+      <Footer/>
     </Router>
   )
 }
