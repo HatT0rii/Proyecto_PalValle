@@ -24,10 +24,10 @@
     margin-top: 5px;
     margin-left: 20px;
 }
-.img-carrito{
+/* .img-carrito{
     width: 25px;
     height: 20px;
-}
+} */
 @media only screen and (max-width: 1000px){
     .nav-link:hover{
         border-bottom: none!important;
