@@ -34,7 +34,7 @@ function Cards() {
             <div className="row">
                 {
                     cards.map((card) => (
-                        <div className="col-md-3 mb-3" key={card.id}>
+                        <div className="col-md-3 mb-3 " key={card.id}>
                             <Card title={card.title} imageSource={card.image}/>
                         </div>
                     ))

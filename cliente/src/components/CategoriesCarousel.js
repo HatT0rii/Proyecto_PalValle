@@ -55,7 +55,7 @@ function CategoriesCarousel() {
             </Link>
             <Link to="/detalle/3">
             <div className="card-wrapper">
-                <div className="card">
+                <div className="card ">
                     <div className="card-image">
                         <img src={foto3} />
                         </div>
@@ -72,8 +72,8 @@ function CategoriesCarousel() {
             <Link to="/detalle/4">
                 <div className="card-wrapper">
                     <div className="card">
-                        <div className="card-image">
-                            <img src={foto4} />
+                        <div className="card-image w-100">
+                            <img  src={foto4} />
                             </div>
                         <ul className="social-icons">
                             <li><a href="#"><i className="fa"></i></a></li>
